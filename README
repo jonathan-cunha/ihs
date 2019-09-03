@@ -1,3 +1,6 @@
+Downloads em:
+https://downloads.openwrt.org/releases/18.06.4/targets/x86/64/
+
 Talvez seja preciso exportar as variaveis:
 
 $ export STAGING_DIR=/home/jonathan/Softwares/openwrt/sdk/openwrt-sdk-18.06.4-x86-64_gcc-7.3.0_musl.Linux-x86_64/staging_dir
