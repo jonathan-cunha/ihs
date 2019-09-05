@@ -33,7 +33,7 @@ int pckt_rcv (struct sk_buff *skb, struct net_device *dev, struct packet_type *p
     struct udphdr *udp_header;
     struct tcphdr *tcp_header;
     struct list_head *p;
-    char* __data__ = NULL;
+    unsigned char* __data__ = NULL;
 
     unsigned int src_ip = (unsigned int)ip_header->saddr;
     unsigned int dest_ip = (unsigned int)ip_header->daddr;
@@ -49,7 +49,7 @@ int pckt_rcv (struct sk_buff *skb, struct net_device *dev, struct packet_type *p
             tcp_header = (struct tcphdr *)skb_transport_header(skb);
             src_port = (unsigned int)ntohs(tcp_header->source);
             dest_port = (unsigned int)ntohs(tcp_header->dest);
-            __data__ = (char*)(skb->data + (tcp_header->doff)*4);
+            __data__ = (unsigned char *)((unsigned char *)tcp_header + (tcp_header->doff)*4);
     }
 
     printk(KERN_INFO "OUT packet info: src ip: %u, src port: %u; dest ip: %u, dest port: %u; proto: %u\n", src_ip, src_port, dest_ip, dest_port, ip_header->protocol);
