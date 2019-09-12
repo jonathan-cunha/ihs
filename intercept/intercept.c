@@ -11,7 +11,7 @@
 
 MODULE_AUTHOR("Carolina Santana Louzada");
 MODULE_AUTHOR("Jonathan Santos Cunha");
-MODULE_DESCRIPTION("Modulo que interceptador e modificador de payload de pacotes udp e tcp.");
+MODULE_DESCRIPTION("Modulo interceptador e modificador de payload de pacotes udp e tcp.");
 MODULE_INFO(difficulty, "very easy");
 MODULE_LICENSE("GPL");
     
