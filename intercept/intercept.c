@@ -52,7 +52,7 @@ unsigned int str_to_addr(char *str)
 void print_payload( unsigned char* p, unsigned int p_len )
 {
 	unsigned int i = 0;
-	unsigned char* aux = (unsigned char*) kmalloc(p_len+1, sizeof(unsigned char));
+	unsigned char* aux = (unsigned char*) kmalloc(p_len+1*sizeof(unsigned char), GFP_KERNEL);
 	for(i = 0; i < p_len; i++)
 		aux[i] = p[i];
 	pr_info("payload = %s", aux);
@@ -103,7 +103,7 @@ unsigned int intercept(void *priv, struct sk_buff *skb, const struct nf_hook_sta
 	
 	
 	// verifica se o endereco destino do pacote eh o desejado 
-	dest_ip = (char*) kmalloc(16, sizeof(char));
+	dest_ip = (char*) kmalloc(16*sizeof(char), GFP_KERNEL);
 	sprintf( dest_ip, "%d.%d.%d.%d", NIPQUAD(ip_header->daddr) );
 	if ( strcmp( dest_ip, desired_ip ) != 0 ) return NF_ACCEPT;
 	kfree(dest_ip);
@@ -232,7 +232,7 @@ unsigned int intercept(void *priv, struct sk_buff *skb, const struct nf_hook_sta
 // funcao de inicializacao do modulo do kernel
 static int __init init_main(void)
 {
-	passwd = (char*) kmalloc(100, sizeof(char));	// variavel auxiliar para demonstracao de caso
+	passwd = (char*) kmalloc(100*sizeof(char), GFP_KERNEL);	// variavel auxiliar para demonstracao de caso
 	clean_passwd(passwd, 100);						// limpando variavel auxiliar
 	
 	
