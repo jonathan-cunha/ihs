@@ -1,6 +1,7 @@
 PROJETO KIntercept
 
-Este projeto é composto por dois programas principais: kintercept.ko e intercept_1.0-1.ipk.
+  Este projeto tem por objetivo a criação de um driver linux para capturar e modificar pacotes UDP e TCP no roteador OpenWrt.
+Composto por dois programas principais:
 
   - kintercept.ko:  é um módulo de kernel linux versão 4.14.131 do OpenWrt;
                     responsável por capturar e modificar o payload de datagramas udp e tcp no espaço do kernel;
@@ -10,7 +11,7 @@ Este projeto é composto por dois programas principais: kintercept.ko e intercep
                           responsável por consumir os dados do dispositivo de gerenciamento;
                           responsável por escolherr os datagramas a serem interceptados alterando o endereço de destino.
   
-O pacote intercept_1.0-1.ipk comunica-se com o módulo do kernel kintercept.ko através de um dispositivo de gerenciamento criado 
+  O pacote intercept_1.0-1.ipk comunica-se com o módulo do kernel kintercept.ko através de um dispositivo de gerenciamento criado 
 pelo módulo quando integrado ao kernel. O dispositivo de gerenciamento é o /dev/intercept0.
   
 
