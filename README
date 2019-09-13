@@ -1,8 +1,17 @@
-Downloads em:
-https://downloads.openwrt.org/releases/18.06.4/targets/x86/64/
+PROJETO KIntercept
 
-Talvez seja preciso exportar as variaveis:
+1) Documentação do OpenWRT : https://openwrt.org/
+
+2)Downloads necessários para arquitetura do roteador escolhida(x86_64): (imagem do firmware e SDK)
+https://downloads.openwrt.org/releases/18.06.4/targets/x86/64/ 
+
+3) Para utilizar o módulo do roteador basta dar um make em 'modulo.o' e exportar o 'modulo.ko' para o roteador. Em seguida ,
+carrega-se o módulo com o comando insmod. 
+
+4) Talvez seja preciso exportar as variáveis:
 
 $ export STAGING_DIR=/path/to/sdk/openwrt-sdk-18.06.4-x86-64_gcc-7.3.0_musl.Linux-x86_64/staging_dir
 
 $ export PATH=/path/to/sdk/openwrt-sdk-18.06.4-x86-64_gcc-7.3.0_musl.Linux-x86_64/staging_dir/toolchain-x86_64_gcc-7.3.0_musl/bin:$PATH
+
+
