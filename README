@@ -1,14 +1,28 @@
 PROJETO KIntercept
 
+Este projeto é composto por dois programas principais: kintercept.ko e intercept_1.0-1.ipk.
+
+  - kintercept.ko:  é um módulo de kernel linux versão 4.14.131 do OpenWrt;
+                    responsável por capturar e modificar o payload de datagramas udp e tcp no espaço do kernel;
+                    responsável por enviar o payload do datagrama capturado para o dispositivo de gerenciamento.
+  
+  - intercept_1.0-1.ipk:  é um pacote a ser integrado ao firmwware do OpenWrt e que executa no espaço do usuário;
+                          responsável por consumir os dados do dispositivo de gerenciamento;
+                          responsável por escolherr os datagramas a serem interceptados alterando o endereço de destino.
+  
+O pacote intercept_1.0-1.ipk comunica-se com o módulo do kernel kintercept.ko através de um dispositivo de gerenciamento criado 
+pelo módulo quando integrado ao kernel. O dispositivo de gerenciamento é o /dev/intercept0.
+  
+
 1) Documentação do OpenWRT : https://openwrt.org/
 
-2)Downloads necessários para arquitetura do roteador escolhida(x86_64): (imagem do firmware e SDK)
+2) Downloads necessários para arquitetura do roteador escolhida (x86_64): (imagem do firmware e SDK)
 https://downloads.openwrt.org/releases/18.06.4/targets/x86/64/ 
 
 3) Para utilizar o módulo do roteador basta dar um make em 'modulo.o' e exportar o 'modulo.ko' para o roteador. Em seguida ,
-carrega-se o módulo com o comando insmod. 
+carrega-se o módulo com o comando 'insmod modulo.ko'. Para remover o módulo do kernel digita-se o comando 'rmmod modulo'.  
 
-4) Talvez seja preciso exportar as variáveis:
+4) Talvez seja preciso exportar as variáveis para compilar e construir os pacotes OpenWrt:
 
 $ export STAGING_DIR=/path/to/sdk/openwrt-sdk-18.06.4-x86-64_gcc-7.3.0_musl.Linux-x86_64/staging_dir
 
